@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"name": "Element-Fox",
+			"path": "Element-Fox"
+		}
+	],
+	"settings": {
+		"php.validate.executablePath": ""
+	}
+}
