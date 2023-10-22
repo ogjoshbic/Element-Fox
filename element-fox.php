@@ -31,3 +31,5 @@ function add_new_sendfox_form_action ($form_actions_registrar){
 
 }
 add_action( 'elementor_pro/forms/actions/register', 'add_new_sendfox_form_action' );
+
+Josh Bickford
