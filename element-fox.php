@@ -13,24 +13,21 @@
  * Elementor Pro tested up to: 3.16.2
  */
 
-/* Main Plugin File */
-...
-function element_fox_activate() {
-
-  add_option( 'Activated_Plugin', 'Plugin-Slug' );
-
-  /* activation code here */
+ if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
 }
-register_activation_hook( __FILE__, 'my_plugin_activate' );
+/**
+ * Add new subscriber to Sendfox email list.
+ * 
+ * @since 1.0.0
+ * @param ElementorPro\Modules\Forms\Registrars\Form_Actions_Registrar $form_actions_registrar
+ * @return void
+ */
+function add_new_sendfox_form_action ($form_actions_registrar){
 
-function load_plugin() {
+    include_once( __DIR__ .  '/form-actions/sendfox.php' );
 
-    if ( is_admin() && get_option( 'Activated_Plugin' ) == 'Plugin-Slug' ) {
+    $form_actions_registrar->register( new Sendfox_Action_After_Submit() );
 
-        delete_option( 'Activated_Plugin' );
-
-        /* do stuff once right after activation */
-        // example: add_action( 'init', 'my_init_function' );
-    }
 }
-add_action( 'admin_init', 'load_plugin' );
+add_action( 'elementor_pro/forms/actions/register', 'add_new_sendfox_form_action' );
